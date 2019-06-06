@@ -11,7 +11,7 @@ class Resize {
     const filepath = this.filepath(filename)
 
     await sharp(buffer)
-      .resize({ width: 1080 })
+      .resize({ width: 1024 })
       .toFile(filepath)
     
     return filename
