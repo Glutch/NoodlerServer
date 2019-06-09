@@ -1,3 +1,24 @@
 {
-  "data": []
+  "data": [
+    {
+      "_id": "hwV24zMlKhiMGQly",
+      "name": "Very Funky Brownie",
+      "text": "1 tbsp soy sauce\n3 tbsp happy noodle\n\n1. Cook noodle\n2. Eat noodle\n3. Enjoy!",
+      "score": "2",
+      "saves": 0,
+      "views": 5,
+      "image": "1ad640a5-d038-434c-b09f-848bc5867e7b.png",
+      "date": "2019-06-09T18:52:50.500Z"
+    },
+    {
+      "_id": "fCmOzJXvjdleMzSf",
+      "name": "Boring Smelly Potato",
+      "text": "1 tbsp soy sauce\n3 tbsp happy noodle\n\n1. Cook noodle\n2. Eat noodle\n3. Enjoy!",
+      "score": "4",
+      "saves": 0,
+      "views": 10,
+      "image": "c940124f-e9cc-47df-ad31-96ae23abf737.png",
+      "date": "2019-06-09T18:55:04.016Z"
+    }
+  ]
 }

@@ -7,6 +7,7 @@ const recipes = require('./db')
 const upload = require('./uploadMiddleware')
 const Resize = require('./Resize')
 
+// function to handle the saving of recipes to ninjadb
 const addRecipe = (body, filename) => {
   recipes.push({
     _id: body._id,
@@ -37,26 +38,30 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   }
 })
 
+// function to handle deletion of recipes
 router.get('/delete', (req, res) => {
-  const { _id } = req.query
-  recipes.remove({ _id })
-  res.status(200).json({ message: 'delete' })
+  const { _id } = req.query // grabs _id from request
+  recipes.remove({ _id }) // removes recipe from db
+  res.status(200).json({ message: 'delete' }) // sends response msg to client
 })
 
+// fetches a specific recipe from db
 router.get('/get', (req, res) => {
-  const { _id } = req.query
-  const recipe = recipes.find({ _id })
+  const { _id } = req.query // grabs _id from request
+  const recipe = recipes.find({ _id }) // grabs recipe from db
   const result = recipe ? recipe : 'not found'
   res.send({ recipe: result })
-  recipes.upsert({ _id }, {
+  recipe && recipes.upsert({ _id }, { // updates the viewcount everytime a recipe is fetched
     views: recipe.views + 1
   })
 })
 
+// sends the toplist of public recipes from the server. Sorted by saves
 router.get('/top', (req, res) => {
   res.send({ recipes: recipes.filter().sort((a, b) => a.saves - b.saves).reverse() })
 })
 
+// updates a recipes save count
 router.get('/update', (req, res) => {
   const { _id } = req.query
   const recipe = recipes.find({ _id })
